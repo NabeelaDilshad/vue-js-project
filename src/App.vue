@@ -1,9 +1,9 @@
 <template>
-  <Header />
-  <Home />
+  <Header/>
+ 
 </template>
 
 <script setup>
 import Header from './components/Header.vue'
-import Home from './pages/Home.vue'
+
 </script>

@@ -1,15 +1,49 @@
 <template>
-  <header class="header">
-    <h1 >ShopKart</h1>
-     <div class="searchbar">
-     <p1 class="text">Here your sign in page</p1> 
-     </div>
-
-
-
-    <div class="buttons">
-      <button class="cart">🛒 Cart</button>
-      <button class="signin">Sign in</button>
+  <div class="headercontainer">
+    <div class="header-logo">
+       <h1>Aligarh House</h1>
     </div>
-  </header>
+    <div>
+      <input class="input" placeholder="search your product"/>
+    </div>
+    <div class="button-container">
+      <button style="margin-right: 10px;">SignIn</button>
+      <button>Cart</button>
+    </div>
+  </div>
 </template>
+<script>
+
+</script>
+
+
+<style>
+  .headercontainer{
+    background-color: bisque;
+    display:flex;
+    border : 1px solid red;
+    justify-content: space-between;
+  }
+
+  .headercontainer .header-logo h1{
+    margin : 20px;
+  }
+
+  .headercontainer .button-container{
+    margin: 20px;
+     display: flex;
+     
+  }
+  .input{
+    width: 1000px;
+    margin:20px;
+    height: 30px
+  }
+
+ .headercontainer .button-container button{
+    width: 60px;
+    height: 30px;
+  }
+
+
+</style>
