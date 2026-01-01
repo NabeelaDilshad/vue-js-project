@@ -1,14 +1,17 @@
+<script setup>
+import Header from './components/Header.vue'
+import ProductLandingPage from './components/product/ProductLandingPage.vue';
+
+</script>
+
+
+
+
+
 <template>
-<h1> new project</h1>
-
+ <!-- header  -->
+  <Header/>
+  <!-- productlist  -->
+   <ProductLandingPage/>
+ 
 </template>
-<scipt setup >
-  
-
-</scipt>
-<style>
-
-
-
-
-</style>
