@@ -1,3 +1,8 @@
+<script>
+
+</script>
+
+
 <template>
   <div class="headercontainer">
     <div class="header-logo">
@@ -12,10 +17,6 @@
     </div>
   </div>
 </template>
-<script>
-
-</script>
-
 
 <style>
   .headercontainer{
@@ -42,7 +43,7 @@
 
  .headercontainer .button-container button{
     width: 60px;
-    height: 30px;
+    height: px;
   }
 
 

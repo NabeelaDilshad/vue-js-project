@@ -10,7 +10,8 @@ import ProductLandingPage from './components/product/ProductLandingPage.vue';
 
 <template>
  <!-- header  -->
-  <Header/>
+   <Header :cartItem="CartList" />
+  
   <!-- productlist  -->
    <ProductLandingPage/>
  
