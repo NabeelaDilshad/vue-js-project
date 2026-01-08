@@ -25,7 +25,7 @@ const addTOcart = (cartItem) => {
   justify-content: flex-start;
   flex-wrap: wrap;
   background-color: aquamarine;
-  height: 300px;
+  height: 600px;
   gap: 10px;
   padding: 10px;
 }
@@ -36,5 +36,7 @@ const addTOcart = (cartItem) => {
   background-color: darkgrey;
   text-align: center;
   border-radius: 5px;
+  padding-top: 24px;
+  padding-bottom: 124px;
 }
 </style>

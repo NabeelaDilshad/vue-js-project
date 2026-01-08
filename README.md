@@ -39,95 +39,114 @@ npm run build
 
 
 
-
-
-
 <script setup>
-import{ref} from "vue"
-   const form = ref({
-    name:"",
-    email:"",
-    mobileNumber:"",
-    gender:"",
-    country:"india",
-    skill: []
-   })
+import { ref } from 'vue'
 
-  const  nameInput= (event)=>{
-    form.value.name= event.target.value
-  }
-  const emailInput=(event)=>{
-     form.value.email= event.target.value
-  }
-  const mobileInput =(event)=>{
+const userName = ref("")
+const userAge = ref('')
+const passWord = ref('12345')
+const country = ref('')
+const gender = ref('male')
 
-    form.value.mobileNumber=  event.target.value
-  }
-  const genderChange=(event ,gender)=>{
-     if(event.target.checked == true){
-      form.value.gender = gender
-     } 
-  }
-  const changeCountry=(event)=>{
-    form.value.country=event.target.value
-  }
-  const changeSkill =(event,skills)=>{
-    const index=  form.value.skill.indexOf(skills)
-      if(event.target.checked == true){
-        form.value.skill.push(skills)
-      }
-      else{
-       form.value.skill.splice(index,1)
-      }
-  }
 
+
+
+const countryList = [
+  { name: 'India', value: 'india' },
+  { name: 'United States', value: 'united_states' },
+  { name: 'United Kingdom', value: 'united_kingdom' },
+  { name: 'Canada', value: 'canada' },
+  { name: 'Australia', value: 'australia' },
+  { name: 'Germany', value: 'germany' },
+  { name: 'France', value: 'france' },
+  { name: 'Japan', value: 'japan' },
+  { name: 'China', value: 'china' },
+  { name: 'Brazil', value: 'brazil' }
+];
+
+
+
+const Save = () => {
+   /*
+   const uname = document.getElementById("username").value
+   const uage = document.getElementById("age").value
+   const upassword = document.getElementById("passWord").value
+   userName.value = uname
+   userAge.value = uage
+   passWord.value = upassword
+   */
+
+}
+
+/*
+const handleuserName = ($event) => {
+   userName.value = $event.target.value
+}
+
+const handleuserAge = ($event) => {
+   userAge.value = $event.target.value
+}
+
+const handleuserPassword = ($event) => {
+    passWord.value = $event.target.value
+}
+
+*/
+
+const handleCountry = ($event) =>{
+  country.value= $event.target.value
+}
+
+const handleGender = ($event) =>{
+  gender.value = $event.target.value
+}
 </script>
+
+
+
 <template>
+     <form @submit.prevent="Save">
+        <lable for="username">First name</lable>
+        <input v-model="userName" id="username" placeholder="enter Your name"  />
+        <br/>
+        <br/>
 
-  <form>
-  <label for="name">Name:</label><br/>
-  <input id="name"type="text" :value="form.name" @input="nameInput($event)" placeholder="username"/> <br/><br/>
+        <lable for="age">Age</lable>
+        <input v-model="userAge" id="age" placeholder="enter Your age"  />
+        <br/>
+        <br/>
 
-   <label for="email">Email:</label><br/>
-  <input id="email"type="text" :value= "form.email" @input= "emailInput($event)" placeholder="username"/> <br/><br/>
+        <lable for="passWord">PassWord</lable>
+        <input v-model="passWord" id="passWord" placeholder="enter Your PassWord"  />
+        <br/>
+        <br/>
 
-     <label for="mobnum">Mobilenumber:</label><br/>
-  <input id="mobnum"type="text" :value="form.mobileNumber" @input="mobileInput($event)"  placeholder="username"/> <br/><br/>
+         <lable>Gender</lable>
+          <input id="male" type="radio" value="male" name="gender" :checked="gender === 'male'" @change="handleGender" />
+          <lable for="male">Male</lable>
+          <input id="female" type="radio" value="female" name="gender" :checked="gender === 'female'" @change="handleGender" />
+          <lable for="female">Female</lable>
+         <br/>
+         <br/>
+      
+         <lable for="country">Country</lable>
+         <select id="country" :value="country" @change="handleCountry">
+            <option v-for="item in countryList" :value="item.value">{{item.name}}</option>
+         </select>
+
+        <br/>
+      <br/>
+        
+        <button> Save</button>
+     </form>
 
 
-  <lable>Gender:</lable><br/>
-  <input type="radio" id="male" :value="form.gender" @change="genderChange($event , 'male')"   name="gender"/>
-  <lable for="male">male</lable><br/>
-   <input type="radio" id="female" :value="form.gender" @change="genderChange($event, 'female')"   name="gender"/>
-  <lable for="female">female</lable><br/><br/>
-  
-  <label for="country">Country:</label><br/>
-  <select id="country" :value="form.country" @change="changeCountry($event)">
-    <option value="usa">USA</option>
-     <option value="america">AMERICA</option>
-      <option value="india">INDIA</option>
-       <option value="pakistan">PAKISTAN</option>
-        <option value="london">LONDON</option>
-         <option value="canada">CANADA</option>
-  </select><br/><br/>
+    <p>userName - {{userName }}</p>
+    <p>age --  {{userAge }}</p>
+     <p> passWord - {{passWord}}</p>
+    <p> conutry - {{country}}</p>
+     <p> gender - {{gender}}</p>
+     
+     
 
-  <label>Skills</label><br/>
-  <input type="checkbox" id="javascipt" :value="form.skill"  @change=" changeSkill($event , 'Javascipt' )"   name="skills"/>
-  <lable for="javascript">Javascript</lable><br/>
-    <input type="checkbox" id="html" :value="form.skill"  @change="changeSkill($event ,'Html')"   name="skills"/>
-  <lable for="html">Html</lable><br/>
-   <input type="checkbox" id="react"  :value="form.skill"  @change="changeSkill($event,'React')"     name="skills"/>
-  <lable for="react">React</lable><br/>
-   <input type="checkbox" id="angular" :value="form.skill"  @change="changeSkill($event ,'Angular')"    name="skills"/>
-  <lable for="angular">Angular</lable><br/>
-   <input type="checkbox" id="vuejs" :value="form.skill"  @change="changeSkill($event,'Vuejs')"    name="skills"/>
-  <lable for="vuejs">Vue js</lable><br/><br/>
-
-  <button style="margin: 2px;">Reset</button>
-  <button>Submit</button>
-  </form>
-
-  <p>userdata</p>
-  <p>{{form}}</p>
 </template>
-<style></style>

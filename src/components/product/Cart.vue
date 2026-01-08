@@ -1,5 +1,6 @@
 <script setup>
 import { defineProps , computed, onMounted} from "vue";
+import Header from "../Header.vue";
 const props = defineProps(["carts"]);
 
 
@@ -21,5 +22,6 @@ const totalPrice = computed(() => {
   </div>
   <p>TotalPrice---  {{ totalPrice }}</p><hr/>
   <p>TotalSelectedItem  {{ totalItem }}</p>
+
 </template>
 <style></style>
