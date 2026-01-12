@@ -5,14 +5,12 @@ import ProductLandingPage from './components/product/ProductLandingPage.vue';
 </script>
 
 
-
-
-
 <template>
  <!-- header  -->
    <Header :cartItem="CartList" />
   
   <!-- productlist  -->
    <ProductLandingPage/>
+      <RouterView />
  
 </template>
