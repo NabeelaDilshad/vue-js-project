@@ -1,50 +1,61 @@
-<script>
-
-</script>
-
-
 <template>
-  <div class="headercontainer">
-    <div class="header-logo">
-       <h1>Aligarh House</h1>
+  <div class="headerContainer">
+    <div style="display: flex">
+      <h1>Aligarh Shop</h1>
+      <nav>
+        <RouterLink to="/">Home</RouterLink>
+      </nav>
     </div>
     <div>
-      <input class="input" placeholder="search your product"/>
+      <input class="searchBar" placeholder="Search Product" />
     </div>
-    <div class="button-container">
-      <button style="margin-right: 10px;">SignIn</button>
-      <button>Cart</button>
+    <div class="headerButton">
+      <button style="margin-right: 10px"  @click="goToCart">Cart</button>
+      <button>Login</button>
     </div>
   </div>
 </template>
+<script setup>
+import { useRouter } from 'vue-router'
+const router = useRouter()
 
-<style>
-  .headercontainer{
-    background-color: bisque;
-    display:flex;
-    border : 1px solid red;
-    justify-content: space-between;
-  }
+const goToCart = () => {
+    router.push('/cart')
+}
+</script>
 
-  .headercontainer .header-logo h1{
-    margin : 20px;
-  }
+<style scoped>
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  background-color: #e1d0d0;
+  margin: 8px;
+}
 
-  .headercontainer .button-container{
-    margin: 20px;
-     display: flex;
-     
-  }
-  .input{
-    width: 1000px;
-    margin:20px;
-    height: 30px
-  }
+.headerContainer .headerButton button {
+  border-radius: 5px;
+  font-weight: 600;
+  width: 80px;
+  height: 30px;
+  cursor: pointer;
+}
 
- .headercontainer .button-container button{
-    width: 60px;
-    height: px;
-  }
+.headerContainer .searchBar {
+  padding: 5px;
+  border-radius: 5px;
+  height: 35px;
+  width: 400px;
+}
+.headerContainer .headerButton button:hover {
+  background-color: rgb(148, 99, 99);
+}
 
-
+.headerContainer nav {
+  margin-left: 11px;
+  margin-top: 11px;
+}
+.headerContainer nav a {
+  padding: 0px 5px 0px 5px;
+}
 </style>
