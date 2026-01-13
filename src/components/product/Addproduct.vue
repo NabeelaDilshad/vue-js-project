@@ -22,6 +22,7 @@ const productAdd = () => {
     return;
   }
   useProductStore.addProduct(form.value);
+  //reset
   form.value = {
     name: "",
     price: null,
@@ -29,12 +30,17 @@ const productAdd = () => {
   };
   router.push("/");
 };
+
+// const handleName = ($event)=>{
+//  form.value.name=$event.target.value
+// }
 </script>
 <template>
   <h4>Add Product</h4>
   <form @submit.prevent="productAdd">
     <label for="pname">Product Name</label>
     <input v-model="form.name" type="text" id="pname" />
+     <!-- <input type="text" id="pname" :value="form.name" @input="handleName"/> -->
     <label for="price">Product Price</label>
     <input v-model="form.price" type="text" id="price" />
     <label for="pcategory">Product Category</label>

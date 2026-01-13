@@ -32,7 +32,7 @@ const filterData = computed(() => {
 
 
 
-const addProduct = () => {
+const RedirectProductPage = () => {
   router.push("/addproduct")
 }
 
@@ -40,7 +40,7 @@ const addProduct = () => {
 <template>
 
     <div class="addproduct_container">
-     <button @click="addProduct">Add Product</button>
+     <button @click="RedirectProductPage">Add Product</button>
   </div>
  
   <div class="ProductContainer">
