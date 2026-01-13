@@ -4,20 +4,26 @@
       <h1>Aligarh Shop</h1>
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/admin">Admin</RouterLink>
-        <RouterLink to="/userList">User Record</RouterLink>
       </nav>
     </div>
     <div>
       <input class="searchBar" placeholder="Search Product" />
     </div>
     <div class="headerButton">
-      <button style="margin-right: 10px">Cart</button>
+      <button style="margin-right: 10px"  @click="goToCart">Cart</button>
       <button>Login</button>
     </div>
   </div>
 </template>
-<script></script>
+<script setup>
+import { useRouter } from 'vue-router'
+const router = useRouter()
+
+const goToCart = () => {
+    router.push('/cart')
+}
+</script>
+
 <style scoped>
 .headerContainer {
   display: flex;
@@ -30,7 +36,7 @@
 .headerContainer .headerButton button {
   border-radius: 5px;
   font-weight: 600;
-  width: 50px;
+  width: 80px;
   height: 30px;
   cursor: pointer;
 }

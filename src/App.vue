@@ -8,9 +8,6 @@ import ProductLandingPage from './components/product/ProductLandingPage.vue';
 <template>
  <!-- header  -->
    <Header :cartItem="CartList" />
-  
-  <!-- productlist  -->
-   <ProductLandingPage/>
       <RouterView />
  
 </template>

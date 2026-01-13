@@ -1,12 +1,21 @@
 <script setup>
-import products from "../../data/productData";
-import { ref } from "vue";
-import Cart from "./Cart.vue";
+import Pagination from "../common/Pagination.vue";
+import { computed, ref } from "vue";
+import { useRouter  } from "vue-router";
+import { useProduct } from "../composables/useProduct";
 
-const CartList = ref([]);
-const addTOcart = (cartItem) => {
-  CartList.value.push(cartItem);
-}
+const productStore = useProduct();
+
+const products = computed(() => {
+    return productStore.getProduct();
+})
+
+const router = useRouter();
+const cartList = ref([]);
+
+const addToCard = (cartItem) => {
+  cartList.value.push(cartItem);
+};
 
 const PER_PAGE_ITEMS = 15;
 const current_page = ref(1);
@@ -18,48 +27,66 @@ const gotoPage = (value) => {
 const filterData = computed(() => {
   const start = (current_page.value - 1) * PER_PAGE_ITEMS;
   const end = start + PER_PAGE_ITEMS;
-  return products.slice(start, end);
+  return products.value.slice(start, end);
 });
+
+
+
+const addProduct = () => {
+  router.push("/addproduct")
+}
+
 </script>
 <template>
-  <div class="container">
-    <div class="cart-container" v-for="item in filterData" :key="item.id">
+
+    <div class="addproduct_container">
+     <button @click="addProduct">Add Product</button>
+  </div>
+ 
+  <div class="ProductContainer">
+    <div class="product" v-for="item in filterData" :key="item.id">
       <p>{{ item.name }}</p>
       <p>{{ item.price }}</p>
       <p>{{ item.category }}</p>
-      <button @click="addTOcart(item)">addToCart</button>
+      <button @click="addToCard(item)">Add To Cart</button>
     </div>
+    <h1 v-if="filterData?.length === 0 ">
+        No Product Added Here please use Add product and add Product
+    </h1>
   </div>
-   <Pagination
+  <Pagination
     :perPageItem="PER_PAGE_ITEMS"
     :currentPage="current_page"
     :totalLength="products.length"
     @goToPage="gotoPage"
   />
-  <Cart :carts="CartList" />
 </template>
 <style scoped>
-.container {
-  display: flex;
+.ProductContainer {
   justify-content: flex-start;
+  display: flex;
   flex-wrap: wrap;
-  background-color: aquamarine;
-      align-content: start;
-
-  height: 600px;
-  gap: 10px;
-  padding: 10px;
+  align-content: flex-start;
+  gap: 20px;
+  height: 450px;
+  background-color: aliceblue;
+  margin-left: 6px;
+  margin-right: 6px;
+  padding: 8px;
   overflow-x: hidden;
   overflow-y: auto;
+  margin-top: 10px;
 }
-.container .cart-container {
-  border: 1px solid lightblue;
-  height: 120px;
-  width: 120px;
-  background-color: darkgrey;
-  text-align: center;
+.ProductContainer .product {
   border-radius: 5px;
-  padding-top: 24px;
-  padding-bottom: 124px;
+  background-color: #d9d9d9;
+  width: 140px;
+  height: 166px;
+  text-align: center;
+}
+
+.addproduct_container{
+  display: flex;
+  justify-content: end;
 }
 </style>
